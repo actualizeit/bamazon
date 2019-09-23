@@ -20,6 +20,25 @@ connection.connect(function(err) {
     mainScreen()
   });
 
+  function mainScreen(){
+    inquirer.prompt([
+      {
+        type: "list",
+        name: "choice",
+        message: "What would you like to do?",
+        choices: ["View Items","Imma buy summin!","Quit"]
+      }
+  ]).then(function(res) {
+      if(res.choice === "Imma buy summin!") {
+          buyItem();
+      } else if (res.choice === "View Items") {
+        displayItems();
+      }else{
+        connection.end();
+      }
+    });
+  };
+
 function displayItems(){
   var query = "SELECT * FROM products";
   connection.query(query, function(err, res) {
@@ -38,6 +57,7 @@ function displayItems(){
   });
   mainScreen();
 };
+
 function buyItem(){
   inquirer.prompt([
     {
@@ -76,22 +96,3 @@ function buyItem(){
     })
   })
 }
-
-function mainScreen(){
-  inquirer.prompt([
-    {
-      type: "list",
-      name: "choice",
-      message: "What would you like to do?",
-      choices: ["View Items","Imma buy summin!","Quit"]
-    }
-]).then(function(res) {
-    if(res.choice === "Imma buy summin!") {
-        buyItem();
-    } else if (res.choice === "View Items") {
-      displayItems();
-    }else{
-      connection.end();
-    }
-  });
-};
