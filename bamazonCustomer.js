@@ -17,23 +17,26 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
     if (err) throw err;
-    displayItems()
+    mainScreen()
   });
 
 function displayItems(){
   var query = "SELECT * FROM products";
   connection.query(query, function(err, res) {
     if (err) throw err;
+    console.log("\n Look at all this sweet stuff!!!")
     for (var i = 0; i < res.length; i++) {
-      console.log("ID: " + res[i].item_id + 
-                " || Product Name: " + res[i].product_name + 
-                " || Department Name: " + res[i].department_name + 
-                " || Price: " + res[i].price +
-                " || Stock Quantity: " + res[i].stock_quantity
-                );
+      console.log(
+        "\n ID: " + res[i].item_id + 
+        " || Product Name: " + res[i].product_name + 
+        " || Department Name: " + res[i].department_name + 
+        " || Price: " + res[i].price +
+        " || Stock Quantity: " + res[i].stock_quantity
+      );
     }
+    console.log("\n\n\n")
   });
-  buyItem();
+  mainScreen();
 };
 function buyItem(){
   inquirer.prompt([
@@ -51,25 +54,44 @@ function buyItem(){
     var query = "select * from products where ?"
     connection.query(query, {item_id: answer.id}, function(err, res) {
       if (err) throw err;
-      if (answer.quantity < res.stock_quantity){
-        console.log("Ain't anuff of it!")
+      if (answer.quantity > res[0].stock_quantity){
+        console.log("Ain't anuff of it! Buy somthin else!")
+        mainScreen();
       }else{
-        stockLeft = res.stock_quantity - answer.quantity
-        console.log("That set you back $" + answer.quantity * res.price + "yo! Betta save them sheckels")
+        // console.log("stock " + res[0].stock_quantity)
+        // console.log("buyin " + answer.quantity)
+        var stockLeft = res[0].stock_quantity - answer.quantity
+        // console.log("stockLeft " + stockLeft)
+        var cost = answer.quantity * res[0].price
+        console.log("That'll set you back $" + cost + " yo! Betta save them sheckels")
         connection.query("UPDATE products SET ? WHERE ?",
-          [{item_id: answer.id},
-          {stock_quantity: stockLeft}], 
+          [{stock_quantity: stockLeft},
+          {item_id: answer.id}],
           function(err) {
             if (err) throw err;
           }
         )
+        mainScreen();
       }
     })
-    displayItems()
   })
 }
 
-// connection.query("select res.id from products where price < 3", function(err, res) {
-//   if(err) throw err;
-//   console.log(JSON.stringify(res, null, 2));
-// })
+function mainScreen(){
+  inquirer.prompt([
+    {
+      type: "list",
+      name: "choice",
+      message: "What would you like to do?",
+      choices: ["View Items","Imma buy summin!","Quit"]
+    }
+]).then(function(res) {
+    if(res.choice === "Imma buy summin!") {
+        buyItem();
+    } else if (res.choice === "View Items") {
+      displayItems();
+    }else{
+      connection.end();
+    }
+  });
+};
