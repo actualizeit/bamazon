@@ -88,7 +88,7 @@ function addInv(){
         {
             type: "input",
             name: "quantity",
-            message: "How many units would you like to stock?",
+            message: "How many additional units?"
         }
     ]).then(function(ans) {
         connection.query("UPDATE products SET stock_quantity = stock_quantity + " + ans.quantity + " WHERE ?",

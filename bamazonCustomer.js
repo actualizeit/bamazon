@@ -91,6 +91,12 @@ function buyItem(){
             if (err) throw err;
           }
         )
+        connection.query("UPDATE products SET product_sales = product_sales + " + cost + " WHERE ?",
+        {item_id: answer.id},
+        function(err) {
+          if (err) throw err;
+        }
+      )
         mainScreen();
       }
     })
