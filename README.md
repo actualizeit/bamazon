@@ -18,6 +18,8 @@ Take a look and be amazed!
 
 [Supervisors (Parasites)](#)
 
+Anyway stay woke fam.
+
 ### Prerequisites
 
 This is a node app, so you'll need [node](https://nodejs.org/en/), obvi. You'll also need to install the other npm packages as discussed below.
@@ -38,7 +40,6 @@ Try stuff, go wild. Let me know what happens.
 * [mySQL Workbench](https://www.mysql.com/products/workbench/) - Some kind of dolphin conservation software I believe
 * [mySQL npm](https://www.npmjs.com/package/mysql) - Brings your remote information through a series of tubes to your terminal
 * [inquirer](https://www.npmjs.com/package/inquirer/) - You have answers, it has questions
-
 
 ## Contributing
 
