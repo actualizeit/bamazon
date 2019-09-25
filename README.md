@@ -12,9 +12,7 @@ You select options via inquirer and it updates the local mysql database, giving 
 
 Take a look and be amazed!
 
-[Customers (Sheeple)](https://drive.google.com/file/d/1IaPzRHJ5tPV9jsw-rWguSkWiOEh-seAl/view)
-
-[Managers (Sellouts)](#)
+[Customers (Sheeple) & Managers (Sellouts)](https://drive.google.com/file/d/16TX0qRQ0zQsCgGJlb7OvT9tj1Q9Y8Xv3/view)
 
 [Supervisors (Parasites)](#)
 
