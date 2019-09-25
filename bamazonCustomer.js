@@ -17,7 +17,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
     if (err) throw err;
-    mainScreen()
+    displayItems();
   });
 
   function mainScreen(){
@@ -53,9 +53,10 @@ function displayItems(){
         " || Stock Quantity: " + res[i].stock_quantity
       );
     }
-    console.log("\n\n\n")
+    console.log("\n")
+    mainScreen();
   });
-  mainScreen();
+
 };
 
 function buyItem(){
@@ -83,7 +84,7 @@ function buyItem(){
         var stockLeft = res[0].stock_quantity - answer.quantity
         // console.log("stockLeft " + stockLeft)
         var cost = answer.quantity * res[0].price
-        console.log("That'll set you back $" + cost + " yo! Betta save them sheckels")
+        console.log("\nThat'll set you back $" + cost + " yo! Betta save them shekels")
         connection.query("UPDATE products SET ? WHERE ?",
           [{stock_quantity: stockLeft},
           {item_id: answer.id}],
@@ -95,9 +96,10 @@ function buyItem(){
         {item_id: answer.id},
         function(err) {
           if (err) throw err;
+          console.log("\n");
+          mainScreen();
         }
-      )
-        mainScreen();
+        )
       }
     })
   })

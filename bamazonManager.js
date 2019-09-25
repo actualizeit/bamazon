@@ -56,9 +56,9 @@ function displayItems(){
         " || Stock Quantity: " + res[i].stock_quantity
       );
     }
+    console.log("\n")
+    mainScreen();
   });
-  console.log("\n\n\n\n")
-  mainScreen();
 };
 
 function lowInv(){
@@ -73,9 +73,10 @@ function lowInv(){
                 " || Stock Quantity: " + res[i].stock_quantity
             );
         }
+        console.log("\n")
+        mainScreen();
     })
-    console.log("\n\n\n\n")
-    mainScreen();
+
 }
   
 function addInv(){
@@ -95,11 +96,11 @@ function addInv(){
           {item_id: ans.id},
           function(err) {
             if (err) throw err;
+            console.log("\nStock level adjusted! " + ans.quantity + " units added. Thanks boss!")
+            console.log("\n")
+            mainScreen();
           }
         )
-        console.log("Stock level adjusted! Thanks boss!")
-        console.log("\n\n\n\n")
-        mainScreen();
     })
 }
 
@@ -136,7 +137,8 @@ function addProd() {
       },
       function(err, res) {
         if (err) throw err;
-        console.log(res.affectedRows + " product inserted!\n\n\n\n");
+        console.log("\n" + 
+        res.affectedRows + " product inserted!\n");
         mainScreen();
       }
     );
