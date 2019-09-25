@@ -12,7 +12,7 @@ You select options via inquirer and it updates the local mysql database, giving 
 
 Take a look and be amazed!
 
-[Customers (Sheeple)](#) (These work but I have to get back in town to record the videos, prolly Wed. morn)
+[Customers (Sheeple)](https://drive.google.com/file/d/1IaPzRHJ5tPV9jsw-rWguSkWiOEh-seAl/view)
 
 [Managers (Sellouts)](#)
 
