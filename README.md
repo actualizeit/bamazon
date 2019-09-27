@@ -14,7 +14,7 @@ Take a look and be amazed!
 
 [Customers (Sheeple) & Managers (Sellouts)](https://drive.google.com/file/d/16TX0qRQ0zQsCgGJlb7OvT9tj1Q9Y8Xv3/view)
 
-[Supervisors (Parasites)](#)
+[Supervisors (Parasites)](https://drive.google.com/file/d/1-1WPe0tuFLZy7uW_xumuZzX-9UPdfBRw/view)
 
 Anyway stay woke fam.
 
